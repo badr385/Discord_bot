@@ -2,44 +2,41 @@ import discord
 from discord.ext import commands
 import TenGiphPy
 
-tokens = {'bot': 'ODg1NTkyNzEzNTgyNTAxOTQ4.YTpSfA.ez4udenyhqjBPSaDgMzqBKqUHbk',
-          'tenor': 'HIG3JD4W9OMM',
+tokens = {'bot': 'bottoken',
+          'tenor': 'tenortokenhere',
           }
-
+#u can add a prefix as u wish
 bot = commands.Bot(command_prefix='')
 bot.remove_command('help')
 t = TenGiphPy.Tenor(token=tokens['tenor'])
 
 
+#all this functions will return u a gif depending on the keywork set in t.random
 @bot.command(pass_context=True)
 async def random(ctx, message):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
+    """This command will return a tenor gif if you type "random cat" as example."""
     getgifurl = t.random(message)
     print(message)
     await ctx.send(f'{getgifurl}')
 
 @bot.command(pass_context=True)
 async def happy(ctx):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
     getgifurl = t.random("happy")
     await ctx.send(f'{getgifurl}')
 
 @bot.command(pass_context=True)
 async def model(ctx):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
     getgifurl = t.random("bikini hot girl")
     print(getgifurl)
     await ctx.send(f'{getgifurl}')
 
 @bot.command(pass_context=True)
 async def sparta(ctx):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
     getgifurl = t.random("This is sparta")
     await ctx.send(f'{getgifurl}')
 
 @bot.command(pass_context=True)
 async def silver(ctx):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
     getgifurl = t.random("sylvester stallone")
     await ctx.send(f'{getgifurl}')
 
@@ -51,19 +48,16 @@ async def Arnold(ctx):
 
 @bot.command(pass_context=True)
 async def yoda(ctx):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
     getgifurl = t.random("Yoda")
     await ctx.send(f'{getgifurl}')
 
 @bot.command(pass_context=True)
 async def boobs(ctx):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
     getgifurl = t.random("bouncing boobs")
     await ctx.send(f'{getgifurl}')
 
 @bot.command(pass_context=True)
 async def memes(ctx):
-    """This command will return a tenor gif if you type "!tenor cat" as example."""
     getgifurl = t.random("memes")
     await ctx.send(f'{getgifurl}')
 
