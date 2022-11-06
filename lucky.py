@@ -8,12 +8,15 @@ import datetime
 load_dotenv()
 intents = discord.Intents.all()
 intents.members = True
+#Set ur bot prefix
 bot = commands.Bot(command_prefix='!', intents=intents)
+#to remove by default help prefix from ur bot
 bot.remove_command('help')
+
+#getting date and month of the giveaway
 x = datetime.datetime.now()
 month = x.strftime("%B")
 year = x.strftime("%Y")
-
 
 @bot.event
 async def on_ready():
@@ -34,7 +37,7 @@ async def lucky(ctx, rolename):
 				names = []        
 				for row in participant:
 					names.append(row.name)    
-        Winner = random.choice(names)
+        			Winner = random.choice(names)
 				for row2 in participant:
 					if row2.name == Winner:
 						Wid = row2.id
@@ -61,7 +64,7 @@ async def lucky(ctx, rolename):
 	                 icon_url=avatar)
 	await ctx.send(embed=embed)
 
-
+#sending discord message to show help commands
 @bot.command(pass_context=True)
 async def lhelp(ctx):
 	embed = discord.Embed(title="How to use little Lucky <3",
@@ -77,7 +80,7 @@ async def lhelp(ctx):
 	    inline=True)
 	await ctx.send(embed=embed)
 
-
+#raise an exception if no rolename was given.
 @lucky.error
 async def tenor_error(ctx, error):
 	if isinstance(error, commands.MissingRequiredArgument):
@@ -87,5 +90,5 @@ async def tenor_error(ctx, error):
 	else:
 		raise error
 
-
+#change it with ur token discord, keep it secret :)
 bot.run(os.getenv('DISCORD_TOKEN'))
