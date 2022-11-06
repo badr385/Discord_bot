@@ -1,4 +1,3 @@
-# Discord_bot
 Discord Bots
 
 There's two different discord bots. The bot lucky was cool and helped a lot of people win money and choose one player in live without anyone complain 
